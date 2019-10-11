@@ -1,0 +1,57 @@
+body {
+  align-items: center;
+  display: flex;
+  font-size: 32px;
+  height: 100vh;
+  justify-content: center;
+  margin: 0;
+}
+
+.typity {
+  border-bottom: 3px solid red;
+  padding-right: 2px;
+  position: relative;
+  transition: background-position .4s;
+  white-space: nowrap;
+}
+.typity::after {
+  animation: blink-cursor .75s step-end infinite;
+  background-color: transparent;
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 2px;
+}
+.typity.highlight {
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0.2) 50%, transparent 50%);
+  background-position: 100%;
+  background-size: 200% 100%;
+}
+.typity.highlight::after {
+  animation: none;
+}
+
+@keyframes blink-cursor {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: black;
+  }
+}
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 12px;
+  }
+
+  .typity {
+    border-bottom: 1px solid red;
+    padding-right: 1px;
+  }
+  .typity::after {
+    width: 1px;
+  }
+}
